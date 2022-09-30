@@ -1,0 +1,42 @@
+<div *ngIf="!user">
+    <h2 style="text-align: center;">You Have to be logged in to see your orders</h2>
+</div>
+
+<div class="spinner" *ngIf="!orders && user">
+    <mat-spinner class="matspinner"></mat-spinner>
+
+</div>
+
+<div *ngIf="orders && orders.length===0">
+    <h2 style="text-align: center;">You dont have any orders</h2>
+</div>
+
+<div class="container" *ngIf="orders">
+
+
+    <div class="card mb-3" style="max-width: 540px;" *ngFor="let order of orders">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src={{order.guitar.image}} class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Order number {{order.id}}</h5>
+                    <p class="card-text">{{order.price}} &euro;</p>
+                    <p class="card-text"><small class="text-muted">Shipped {{order.order_date}}</small></p>
+                    <p class="card-text"><button (click)="delete(order.id!)" class="btn btn-outline-success"> Confirm
+                            order arival </button></p>
+                    <p class="card-text"><button (click)="openReview(order)" class="btn btn-outline-success"> Tell us
+                            what you think </button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="opensReview">
+        <app-review [user]="review.user" [guitar]="review.guitar" (postAdded)="opensReview = false"></app-review>
+
+    </div>
+
+
+</div>

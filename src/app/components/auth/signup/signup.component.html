@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="fill">
+                    <label for="name">Name: </label>
+                    <input matInput type="text" name="name" id="name" formControlName="name">
+                    <mat-error *ngIf="firstFormGroup.controls['name'].invalid">Name is requiered!</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <label for="surname">Surname</label>
+                    <input matInput type="text" name="surname" formControlName="surname" id="surname">
+                    <mat-error *ngIf="firstFormGroup.controls['surname'].invalid">Name is requiered!</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput name="email" formControlName="email">
+                    <mat-error *ngIf="firstFormGroup.controls['email'].invalid">Email is requiered and must be valid!
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput name="username" formControlName="username">
+                    <mat-error *ngIf="firstFormGroup.controls['username'].invalid">Username is requiered and must be
+                        valid!</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput name="password" formControlName="password">
+                    <mat-error *ngIf="firstFormGroup.controls['password'].invalid">Password is requiered and must be
+                        valid!</mat-error>
+                </mat-form-field>
+                <br>
+                <button type="submit" class="btn btn-outline-success"> Sign in </button>
+            </form>
+
+        </div>
+    </div>
+</div>

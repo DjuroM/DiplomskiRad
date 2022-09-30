@@ -1,0 +1,74 @@
+<div class="spinner" *ngIf="!guitar">
+    <mat-spinner class="matspinner"></mat-spinner>
+
+</div>
+
+<div *ngIf="guitar" class="container">
+    <div class="card mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{guitar.image}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title">{{guitar.brand['name'] + ' '+ guitar.model + ' ' +guitar.release_year}}</h2>
+                    <p class="card-text">{{guitar.description}}</p>
+                    <p class="card-text-price"> <small class="text-muted"><b>Price: {{guitar.price}} &euro;</b></small>
+                    </p>
+                    <p>Guitar type: {{guitar.guitar_type['type']}}</p>
+                    <p>Pickups combination: <b> {{guitar.pickups['pickup_combination']}} </b></p>
+                    <p>Pickups: {{guitar.pickups['pickup_description']}}</p>
+                    <p>
+                        <label for="samples">Choose a sample</label>
+                        <select name="samples" [(ngModel)]="selectedSample">
+                            <option value="../assets/LoFiZaCola.mp3">Lofi</option>
+                            <option value="../assets/FunkZaColu.mp3">Funk</option>
+                            <option value="LofiZaCola.mp3">Lofi</option>
+                            <option value="LofiZaCola.mp3">Lofi</option>
+                            <option value="LofiZaCola.mp3">Lofi</option>
+                        </select>
+                    </p>
+                    <p>
+
+
+                        <audio src={{selectedSample}} controls id="audioPlayer">
+
+
+                        </audio>
+                    </p>
+
+                    <p>
+                        <button (click)="onAddToBasket(content)" class="btn btn-success">
+                            Add to basket
+                            <span class="iconShopSpan">
+                                <mat-icon class="iconShop">shopping_basket</mat-icon>
+                            </span>
+                        </button>
+                         <button routerLink="/reviewsGuitar/{{guitar.id}}" class="btn btn-success">Read
+                            reviews</button>
+                         <button class="btn btn-success" (click)="writeReview(content)">Write a review</button>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="writesReview">
+        <app-review [guitar]="guitar" [user]="user" (postAdded)="writesReview = false"></app-review>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h1 class="modal-title">You need to be logged</h1>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-auth-modal [path]="guitar.id"></app-auth-modal>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

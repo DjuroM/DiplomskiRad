@@ -1,0 +1,24 @@
+.card {
+    /* display: block; */
+    /* width: 1000px; */
+    border: 2px solid black;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 20px;
+
+}
+
+/* .img-fluid.rounded-start{
+    width: 300px;
+} */
+
+.card-body {
+    height: 100%;
+}
+
+.card-text-price {
+
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}

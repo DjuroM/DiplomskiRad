@@ -1,0 +1,70 @@
+<div class="spinner" *ngIf="!brands">
+    <mat-spinner class="matspinner"></mat-spinner>
+
+</div>
+
+<div class="container" *ngIf="brands">
+    <div class="row heading">
+        <h1>DJM Guitar Store</h1>
+    </div>
+    <br><br>
+    <div class="row">
+        <h3 style="text-align: center;">Guitar types</h3>
+        <div class="col" routerLink="/guitars" [queryParams]="{type: 'guitarType', id : '1'}">
+            <div class="col image">
+                <img src="https://sc1.musik-produktiv.com/pic-010131765xxl/gibson-custom-shop-1960-les-paul-standard-light-aged.jpg"
+                    class="img-thumbnail" alt="..." matTooltip="Solid body" matTooltipClass="example-tooltip-red">
+
+            </div>
+
+        </div>
+
+        <div class="col" routerLink="/guitars" [queryParams]="{type: 'guitarType', id : '2'}">
+            <div class="col image">
+                <img src="https://www.musicianscart.com/wp-content/uploads/nc/d/a/dapdccmpcscb-fr-300x300.jpg"
+                    class="img-thumbnail" alt="..." matTooltip="Semi-hollow body" matTooltipClass="example-tooltip-red">
+
+            </div>
+
+        </div>
+        <div class="col" routerLink="/guitars" [queryParams]="{type: 'guitarType', id : '3'}">
+
+
+            <div class="col image">
+                <img src="https://www.bhphotovideo.com/images/images2500x2500/ibanez_as63tsfg_as_artcore_vibrante_6_string_1463887.jpg"
+                    class="img-thumbnail" alt="..." matTooltip="Hollow body" matTooltipClass="example-tooltip-red">
+            </div>
+        </div>
+        <div class="col" routerLink="/guitars" [queryParams]="{type: 'guitarType', id : '4'}">
+            <div class="col image">
+                <img src="https://www.adorama.com/images/Large/ibgrg7221wh.jpg" matTooltip="7-string body"
+                    matTooltipClass="example-tooltip-red" class="img-thumbnail" alt="...">
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+        <h3 style="text-align: center;">Brands</h3>
+        <div class="col" *ngFor="let brand of brands" routerLink="/guitars"
+            [queryParams]="{type: 'brand', id : brand.id}">
+
+            <div class="col image">
+                <img src="{{brand.image}}" class="img-thumbnail" alt="..." matTooltip="{{brand.name}}"
+                    matTooltipClass="example-tooltip-red">
+            </div>
+
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+        <div class="col" style="display:flex; justify-content: center; align-items: center;">
+            <a class="specialLink" routerLink="/guitars" [queryParams]="{type: 'all'}">Get all</a>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>

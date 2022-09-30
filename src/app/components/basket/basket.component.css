@@ -1,0 +1,33 @@
+.container {
+    background-color: whitesmoke;
+}
+
+.card {
+    /* display: block; */
+    /* width: 1000px; */
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 10px;
+    /* margin: 10px; */
+    /* border-radius: 20px; */
+    position: relative;
+    margin: 0 auto;
+    height: 200px;
+
+}
+
+.img-fluid.rounded-start {
+    height: 180px;
+}
+
+.card-body {
+    height: 100%;
+}
+
+.card-text-price {
+
+    position: relative;
+    bottom: 0;
+    right: 20px;
+    text-align: right;
+}

@@ -1,0 +1,77 @@
+<div class="container">
+  <mat-stepper headerPosition="bottom" linear #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Your details</ng-template>
+        <mat-form-field appearance="fill">
+          <label for="name">Name: </label>
+          <input matInput type="text" name="name" id="name" value="{{user.name}}" formControlName="name">
+          <mat-error *ngIf="firstFormGroup.controls['name'].invalid">Name is requiered!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <label for="surname">Surname</label>
+          <input matInput type="text" name="surname" formControlName="surname" id="surname" value="{{user.surname}} ">
+          <mat-error *ngIf="firstFormGroup.controls['surname'].invalid">Name is requiered!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput value="{{user.email}}" name="email" formControlName="email">
+          <mat-error *ngIf="firstFormGroup.controls['email'].invalid">Email is requiered and must be valid!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Postal Code</mat-label>
+          <input matInput name="postalcode" formControlName="postalcode" #postalCode placeholder="Ex. 94105">
+          <mat-error *ngIf="firstFormGroup.controls['postalcode'].invalid">Postal Code is requiered!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <label for="country">Country</label>
+          <mat-select name="country" formControlName="country">
+            <mat-option *ngFor="let country of countries" value="{{country}}">
+              {{country.country}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="firstFormGroup.controls['country'].invalid">Country is requiered!</mat-error>
+        </mat-form-field>
+        <button mat-button matStepperNext type="button">Next</button>
+      </form>
+
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup">
+
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Credit card details</ng-template>
+        <mat-form-field appearance="fill">
+          <label for="card">Card number</label>
+          <input matInput type="text" name="card" id="card" formControlName="card">
+          <mat-error *ngIf="secondFormGroup.controls['card'].invalid">Card number is requiered and must be 16 carackters
+            long!</mat-error>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field appearance="fill">
+          <label for="name">CCV: </label>
+          <input matInput type="password" name="ccv" id="ccv" formControlName="ccv">
+          <mat-error *ngIf="secondFormGroup.controls['ccv'].invalid">CCV is requiered and must be 3 caracthers long!
+          </mat-error>
+        </mat-form-field>
+        <button mat-button matStepperNext type="button">Next</button>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="order()">Order</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+</div>

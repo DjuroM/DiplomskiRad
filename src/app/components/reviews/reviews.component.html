@@ -1,0 +1,20 @@
+<div class="spinner" *ngIf="!reviews">
+    <mat-spinner class="matspinner"></mat-spinner>
+
+</div>
+
+<div class="container">
+    <h1 style="text-align: center;">REVIEWS</h1>
+    <div class="card" *ngFor="let review of reviews">
+        <div class="card-body">
+            <h2 class="card-title">User: {{review.user.username}}</h2>
+
+            <p class="card-text"> {{review.review}}</p>
+
+        </div>
+    </div>
+
+    <div *ngIf="reviews && reviews.length === 0">
+        <h2 style="text-align: center;">There are no reviews for this guitar</h2>
+    </div>
+</div>

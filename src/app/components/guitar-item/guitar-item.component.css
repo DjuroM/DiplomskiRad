@@ -1,0 +1,90 @@
+/* .card.mb-3 {
+    animation-duration: 1.5s;
+    animation-name: slidein;
+}
+
+
+
+@keyframes slidein {
+    from {
+        margin-top: 100%;
+        height: -100%;
+    }
+
+    to {
+        margin-top: 0%;
+        height: 100%;
+    }
+} */
+
+.card {
+    /* display: block; */
+    /* width: 1000px; */
+    border: 2px solid black;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 20px;
+
+}
+
+/* .img-fluid.rounded-start{
+    width: 300px;
+} */
+
+.card-body {
+    height: 100%;
+}
+
+.card-text-price {
+
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}
+
+
+.btn.btn-success {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    position: relative;
+    /* shopping_basket */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn.btn-success::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    font-family: 'Material Icons';
+    font-size: 25px;
+    color: black;
+    content: "\e8cb";
+    transform: rotateX(90deg);
+    transition: all 1s;
+}
+
+.btn.btn-success:hover::before {
+    transform: rotateX(0deg);
+}
+
+.iconShopSpan {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+}
+
+.iconShop {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}

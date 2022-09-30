@@ -1,0 +1,66 @@
+<hr>
+<div class="spinner" *ngIf="!fakeGuitars">
+    <mat-spinner class="matspinner"></mat-spinner>
+
+</div>
+
+<mat-drawer-container class="example-container" [hasBackdrop]="true" *ngIf="fakeGuitars">
+    <mat-drawer #drawer class="example-sidenav">
+        <mat-form-field appearance="fill">
+            <mat-label>Brand</mat-label>
+            <mat-select class="matSelect" [(ngModel)]="selectedBrand">
+                <mat-option value="none">None</mat-option>
+                <mat-option value="1">Fender</mat-option>
+                <mat-option value="4">Ibanez</mat-option>
+                <mat-option value="9">PRS</mat-option>
+                <mat-option value="10">Epiphone</mat-option>
+                <mat-option value="12">Squire</mat-option>
+                <mat-option value="13">Gibson</mat-option>
+
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Guitar Type</mat-label>
+            <mat-select class="matSelect" [(ngModel)]="selectedGuitarType">
+                <mat-option value="none">None</mat-option>
+                <mat-option value="1">Solid</mat-option>
+                <mat-option value="2">Semi-Hollow</mat-option>
+                <mat-option value="3">Hollow</mat-option>
+                <mat-option value="4">7 string</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <br>
+        <button mat-stroked-button color="accent" (click)="OnFilter(drawer)">Filter</button>
+    </mat-drawer>
+    <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+            <mat-icon>filter_list</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="fakeGuitars && fakeGuitars.length!=0">
+
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <app-guitar-list-item *ngFor="let guitar of fakeGuitars, let i =index" [guitar]="guitar">
+                </app-guitar-list-item>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <mat-paginator class="pagginator" [length]="length" [pageSize]="5" (page)="OnPagginationEvent($event)"
+                    aria-label="Select page">
+                </mat-paginator>
+            </div>
+        </div>
+
+    </div>
+    <!-- <div class="nothing" *ngIf="fakeGuitars && fakeGuitars.length == 0">
+
+
+    </div> -->
+</mat-drawer-container>

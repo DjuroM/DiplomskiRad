@@ -1,0 +1,12 @@
+<div *ngIf="reviews && reviews.length === 0">
+    <h1>You do not have any reviews</h1>
+</div>
+
+<div class="card" *ngFor="let review of reviews" routerLink="/editReview/{{review.id}}">
+    <div class="card-body">
+        <h2 class="card-title">User: {{review.user.username}}</h2>
+
+        <p class="card-text"> {{review.review}}</p>
+
+    </div>
+</div>
