@@ -70,7 +70,7 @@ export class GuitarListComponent implements OnInit {
 
     this.sub = this.guitarService.isChanged.subscribe(
       Response => {
-       
+
         this.fakeGuitars = Response;
       }
     )
@@ -95,7 +95,7 @@ export class GuitarListComponent implements OnInit {
   }
 
 
-  OnFilter(drawer: MatDrawer) {
+  OnFilter() {
 
     let brandId = this.selectedBrand == 'none' ? 0 : Number.parseInt(this.selectedBrand)
     let guitarTypeID = this.selectedGuitarType == 'none' ? 0 : Number.parseInt(this.selectedGuitarType)
@@ -112,7 +112,7 @@ export class GuitarListComponent implements OnInit {
 
         }
       )
-    } else if (brandId == 0 && guitarTypeID!=0) {
+    } else if (brandId == 0 && guitarTypeID != 0) {
       this.guitarService.getAllByType(guitarTypeID).subscribe(
         response => {
           this.guitars = response;
@@ -140,7 +140,7 @@ export class GuitarListComponent implements OnInit {
         }
       )
     }
-    drawer.toggle();
+
 
   }
 
